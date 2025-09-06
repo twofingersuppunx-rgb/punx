@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>[Bandnaam] — Raw. Loud. Unstoppable.</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Montserrat:wght@300;600;800&display=swap" rel="stylesheet">
+
+<!-- Basic styles -->
+<style>
+:root{
+--bg:#0b0b0b;
+--panel:#111;
+--accent:#c92121; /* fel rood */
+--muted:#bdbdbd;
+--white:#ffffff;
+--max-width:1100px;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Montserrat,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;}
+body{
+background:var(--bg);
+color:var(--white);
+-webkit-font-smoothing:antialiased;
+-moz-osx-font-smoothing:grayscale;
+line-height:1.4;
+}
+
+/* Grunge texture overlay (subtiel) */
+body::after{
+content:"";
+pointer-events:none;
+position:fixed;inset:0;
+background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><filter id="g"><feTurbulence baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23g)" opacity="0.03" fill="black"/></svg>');
+mix-blend-mode:overlay;
+}
+
+.container{max-width:var(--max-width);margin:0 auto;padding:28px;}
+
+/* Header / nav */
+header{padding:10px 0;display:flex;align-items:center;justify-content:space-between}
+.brand{font-family:'Permanent Marker',cursive;font-size:28px;letter-spacing:1px}
+nav{display:flex;gap:18px}
+nav a{color:var(--muted);text-decoration:none;font-weight:600}
+nav a:hover{color:var(--white)}
+
+/* Hero */
+.hero{
+position:relative;
+margin-top:12px;
+border-radius:6px;
+overflow:hidden;
+background:#000;
+}
+.hero .banner{
+background: url('IMG_BANNER.jpg') center/cover no-repeat;
+min-height:420px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:60px 20px;
+}
+.hero .overlay{
+background:linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.85));
+position:absolute;inset:0;
+}
+
+.hero .content{
+position:relative;z-index:2;max-width:900px;margin:0 auto;color:var(--white);
+}
+.hero h1{font-family:'Permanent Marker',cursive;font-size:76px;margin:0 0 6px;line-height:0.9;text-transform:uppercase;letter-spacing:2px}
+.hero .slogan{color:var(--accent);font-weight:800;font-size:34px;margin:6px 0 12px}
+.hero p{color:var(--muted);font-size:18px;margin:8px 0 22px}
+
+.cta{display:inline-flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.btn{
+background:var(--accent);
+color:white;padding:12px 20px;border-radius:6px;text-decoration:none;font-weight:700;
+box-shadow: 0 4px 0 rgba(0,0,0,0.4);border:none;cursor:pointer;
+}
+.btn.ghost{background:transparent;border:2px solid var(--accent);color:var(--accent)}
+
+/* Sections */
+section{padding:46px 0;border-top:1px solid rgba(255,255,255,0.02)}
+.section-inner{max-width:var(--max-width);margin:0 auto;padding:0 22px;display:flex;gap:28px;align-items:flex-start}
+.two-col{display:grid;grid-template-columns:1fr 420px;gap:28px}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:8px}
+
+h2{font-family:'Permanent Marker',cursive;font-size:44px;margin:0 0 10px}
+h3{margin:0 0 8px;font-size:20px;color:var(--white)}
+
+/* Music / embeds */
+.music-grid{display:flex;flex-wrap:wrap;gap:14px}
+.album{width:180px}
+.album img{width:100%;display:block;border-radius:6px}
+.album .title{font-size:14px;margin-top:6px;color:var(--muted)}
+
+/* Agenda */
+.gigs{display:flex;flex-direction:column;gap:12px}
+.gig{display:flex;align-items:center;gap:12px;padding:12px;background:rgba(0,0,0,0.25);border-radius:6px}
+.gig .date{min-width:110px;font-weight:700;color:var(--accent)}
+.gig .meta{color:var(--muted)}
+
+/* Gallery */
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.gallery img{width:100%;height:160px;object-fit:cover;border-radius:6px}
+
+/* Contact/footer */
+.contact-grid{display:grid;grid-template-columns:1fr 360px;gap:20px}
+.socials{display:flex;gap:12px}
+.socials a{display:inline-block;padding:10px 12px;border-radius:6px;border:1px dashed rgba(255,255,255,0.06);color:var(--muted);text-decoration:none}
+
+footer{padding:28px 0;text-align:center;color:var(--muted);font-size:14px}
+
+/* Responsive */
+@media (max-width:900px){
+.two-col{grid-template-columns:1fr}
+.gallery{grid-template-columns:repeat(2,1fr)}
+.hero h1{font-size:44px}
+.hero .slogan{font-size:22px}
+nav{display:none}
+}
+@media (max-width:520px){
+.gallery img{height:120px}
+.album{width:46%}
+.contact-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<header>
+<div class="brand">[Bandnaam]</div>
+<nav>
+<a href="#home">Home</a>
+<a href="#over">Over Ons</a>
+<a href="#muziek">Muziek</a>
+<a href="#agenda">Agenda</a>
+<a href="#media">Media</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+</div>
+
+<!-- HERO -->
+<section id="home" class="hero">
+<div class="banner">
+<div class="overlay"></div>
+<div class="content container">
+<h1>[Bandnaam]</h1>
+<div class="slogan">RAW. LOUD. UNSTOPPABLE.</div>
+<p>Wij zijn [Bandnaam], een punkband die alles geeft op het podium. Bereid je voor op harde riffs, rauwe energie en een onvergetelijke show!</p>
+<div class="cta">
+<a class="btn" href="#muziek">Luister nu</a>
+<a class="btn ghost" href="#agenda">Tourdata</a>
+</div>
+</div>
+</div>
+</section>
+
+<!-- OVER ONS -->
+<section id="over">
+<div class="section-inner container">
+<div style="flex:1">
+<h2>Over Ons</h2>
+<p style="color:var(--muted);max-width:720px">
+Opgericht in 2021 in [stad]. Geïnspireerd door oude-school punk en rebellie. Wij spelen korte, snelle nummers met catchy hooks en een DIY-ethiek.
+</p>
+
+<div style="margin-top:18px" class="card two-col">
+<div>
+<h3>Bandleden</h3>
+<ul style="color:var(--muted);padding-left:18px">
+<li><strong>Naam 1</strong> — zang / gitaar — (Fun fact)</li>
+<li><strong>Naam 2</strong> — bas — (Fun fact)</li>
+<li><strong>Naam 3</strong> — drums — (Fun fact)</li>
+</ul>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center">
+<img src="IMG_MEMBER1.jpg" alt="Bandleden" style="width:100%;border-radius:6px;object-fit:cover;height:240px">
+</div>
+</div>
+</div>
+
+<aside style="width:360px">
+<div class="card">
+<h3>Merch / Shop</h3>
+<p style="color:var(--muted)">Shirts, stickers en limited zines — <a href="#" style="color:var(--accent);text-decoration:underline">bekijk de shop</a></p>
+</div>
+<div style="height:16px"></div>
+<div class="card">
+<h3>Volg ons</h3>
+<div class="socials" style="margin-top:8px">
+<a href="#" target="_blank">Instagram</a>
+<a href="#" target="_blank">YouTube</a>
+<a href="#" target="_blank">Spotify</a>
+</div>
+</div>
+</aside>
+</div>
+</section>
+
+<!-- MUZIEK -->
+<section id="muziek">
+<div class="section-inner container">
+<div style="flex:1">
+<h2>Muziek</h2>
+<p style="color:var(--muted)">Luister onze releases via je favoriete diensten. Hieronder: album previews en embeds.</p>
+
+<div class="music-grid" style="margin-top:12px">
+<!-- Album/single tiles -->
+<div class="album">
+<img src="IMG_ALBUM1.jpg" alt="Album 1 cover">
+<div class="title">Demo EP (2024)</div>
+</div>
+<div class="album">
+<img src="IMG_ALBUM2.jpg" alt="Album 2 cover">
+<div class="title">Single: 'Noise' (2025)</div>
+</div>
+<!-- voeg meer albums toe -->
+</div>
+
+<!-- Spotify embed (voorbeeld) -->
+<div style="margin-top:18px" class="card">
+<h3>Luister op Spotify</h3>
+<!-- Vervang de src door de embed URL van Spotify (Share -> Embed track/album) -->
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/album/ALBUM_ID_HIER" width="100%" height="120" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+</div>
+
+<!-- YouTube embed -->
+<div style="margin-top:12px" class="card">
+<h3>Video</h3>
+<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px">
+<iframe src="https://www.youtube.com/embed/VIDEO_ID_HIER" style="position:absolute;left:0;top:0;width:100%;height:100%;border:0" allowfullscreen></iframe>
+</div>
+</div>
+</div>
+
+<aside style="width:320px">
+<div class="card">
+<h3>Speellijst</h3>
+<p style="color:var(--muted)">Volg onze officiële Spotify-playlist voor live-updates en exclusieve tracks.</p>
+<a class="btn" href="#" target="_blank">Open playlist</a>
+</div>
+</aside>
+</div>
+</section>
+
+<!-- AGENDA -->
+<section id="agenda">
+<div class="section-inner container">
+<div style="flex:1">
+<h2>Agenda</h2>
+<p style="color:var(--muted)">Komende shows — check de details en koop tickets.</p>
+
+<div class="gigs" style="margin-top:12px">
+<div class="gig">
+<div class="date">12 okt 2025</div>
+<div class="meta">
+<div style="font-weight:700">De Grote Club — Stad</div>
+<div style="color:var(--muted)">20:00 — support: [band]</div>
+</div>
+<div style="margin-left:auto"><a class="btn" href="#">Tickets</a></div>
+</div>
+
+<div class="gig">
+<div class="date">03 nov 2025</div>
+<div class="meta">
+<div style="font-weight:700">Kleine Zaal — Stad</div>
+<div style="color:var(--muted)">21:00 — met [andere band]</div>
+</div>
+<div style="margin-left:auto"><a class="btn ghost" href="#">Meer</a></div>
+</div>
+</div>
+</div>
+
+<aside style="width:320px">
+<div class="card">
+<h3>Wil je ons boeken?</h3>
+<p style="color:var(--muted)">Stuur een mail naar <a href="mailto:booking@bandnaam.com" style="color:var(--accent)">booking@bandnaam.com</a></p>
+</div>
+</aside>
+</div>
+</section>
+
+<!-- MEDIA / GALERIJ -->
+<section id="media">
+<div class="section-inner container">
+<div style="flex:1">
+<h2>Galerij</h2>
+<p style="color:var(--muted)">Live shots, backstage en meer.</p>
+
+<div class="gallery" style="margin-top:12px">
+<img src="IMG_GAL1.jpg" alt="Live 1">
+<img src="IMG_GAL2.jpg" alt="Live 2">
+<img src="IMG_GAL3.jpg" alt="Backstage">
+<img src="IMG_GAL4.jpg" alt="Crowd">
+<img src="IMG_GAL5.jpg" alt="Promo">
+<img src="IMG_GAL6.jpg" alt="Merch">
+</div>
+</div>
+
+<aside style="width:320px">
+<div class="card">
+<h3>Video's</h3>
+<p style="color:var(--muted)">Korte live clips en muziekvideo's.</p>
+<a class="btn" href="#" target="_blank">Bekijk op YouTube</a>
+</div>
+</aside>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<div class="section-inner container">
+<div style="flex:1">
+<h2>Contact</h2>
+<p style="color:var(--muted)">Booking, persvragen of gewoon een vraag? Stuur ons een bericht.</p>
+
+<div class="contact-grid" style="margin-top:12px">
+<div class="card">
+<form id="contactForm">
+<label style="display:block;color:var(--muted);font-weight:700;margin-bottom:6px">Naam</label>
+<input name="name" required style="width:100%;padding:10px;border-radius:6px;border:0;background:#111;color:var(--white)">
+
+<label style="display:block;color:var(--muted);font-weight:700;margin:12px 0 6px">E-mail</label>
+<input name="email" type="email" required style="width:100%;padding:10px;border-radius:6px;border:0;background:#111;color:var(--white)">
+
+<label style="display:block;color:var(--muted);font-weight:700;margin:12px 0 6px">Bericht</label>
+<textarea name="message" rows="4" required style="width:100%;padding:10px;border-radius:6px;border:0;background:#111;color:var(--white)"></textarea>
+
+<div style="margin-top:12px">
+<button class="btn" type="submit">Verstuur</button>
+</div>
+</form>
+</div>
+
+<div>
+<div class="card">
+<h3>Band info</h3>
+<p style="color:var(--muted)">Email: <a href="mailto:booking@bandnaam.com" style="color:var(--accent)">booking@bandnaam.com</a></p>
+<p style="color:var(--muted)">Instagram: <a href="#" style="color:var(--accent)">@bandnaam</a></p>
+</div>
+
+<div style="height:12px"></div>
+
+<div class="card">
+<h3>Nieuwsbrief</h3>
+<p style="color:var(--muted)">Blijf op de hoogte van releases en shows.</p>
+<a class="btn ghost" href="#">Inschrijven</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="container">
+© <span id="year"></span> [Bandnaam] — All rights reserved.
+</div>
+</footer>
+
+<!-- Kleine JS: formulier en jaar -->
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Simpele contactform handling (vervang door echte backend of Formspree)
+document.getElementById('contactForm').addEventListener('submit', function(e){
+e.preventDefault();
+alert('Bedankt! Je bericht is verzonden (voorbeeld). Koppel hier je echte e-mail backend of Formspree.');
+this.reset();
+});
+</script>
+</body>
+</html>
